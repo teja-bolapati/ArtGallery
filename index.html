@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Art Gallery Collection</title>
+
+<style>
+/* ---------- Base Reset ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Georgia", "Times New Roman", serif;
+}
+
+body {
+    background-color: #f8f6f3;
+    color: #2b2b2b;
+    line-height: 1.6;
+}
+
+/* ---------- Header ---------- */
+header {
+    background: #ffffff;
+    border-bottom: 1px solid #ddd;
+    padding: 18px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+nav a {
+    margin-left: 30px;
+    text-decoration: none;
+    color: #444;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #b59b5b;
+}
+
+/* ---------- Hero Section ---------- */
+.hero {
+    text-align: center;
+    padding: 60px 20px 50px;
+    background: #ffffff;
+}
+
+.hero span {
+    display: inline-block;
+    border: 1px solid #b59b5b;
+    color: #b59b5b;
+    padding: 6px 18px;
+    border-radius: 25px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 750px;
+    margin: auto;
+    color: #555;
+    font-size: 16px;
+}
+
+/* ---------- Search & Filters ---------- */
+.filters {
+    max-width: 850px;
+    margin: 35px auto 0;
+    display: flex;
+    gap: 15px;
+}
+
+.filters input,
+.filters select {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* ---------- Section Wrapper ---------- */
+section {
+    padding: 50px 60px;
+}
+
+section h3 {
+    font-size: 22px;
+    margin-bottom: 25px;
+    border-left: 4px solid #b59b5b;
+    padding-left: 12px;
+}
+
+/* ---------- Exhibitions ---------- */
+.exhibitions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.exhibit-card {
+    background: #ffffff;
+    padding: 22px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.exhibit-card small {
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+.exhibit-card h4 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.exhibit-card p {
+    color: #555;
+    font-size: 14px;
+}
+
+/* ---------- Artwork Grid ---------- */
+.artworks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.art-card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+
+.art-card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+
+.art-details {
+    padding: 18px;
+}
+
+.art-details h4 {
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.art-details p {
+    font-size: 14px;
+    color: #666;
+}
+
+.price {
+    margin: 12px 0;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+button {
+    background: #2b2b2b;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background: #b59b5b;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    background: #ffffff;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    padding: 25px;
+    font-size: 14px;
+    color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>ArtGallery</h1>
+    <nav>
+        <a href="#">Gallery</a>
+        <a href="#">Exhibitions</a>
+        <a href="#">Artists</a>
+        <a href="#">Visit</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <span>Curated Art Collection</span>
+    <h2>Explore Our Collection</h2>
+    <p>
+        A refined selection of artworks from globally acclaimed artists,
+        celebrating tradition, innovation, and timeless aesthetics.
+    </p>
+
+    <div class="filters">
+        <input type="text" placeholder="Search artworks or artists">
+        <select>
+            <option>All Exhibitions</option>
+            <option>Modern Landscapes</option>
+            <option>Digital Frontiers</option>
+            <option>Classical Portraits</option>
+        </select>
+        <select>
+            <option>All Mediums</option>
+            <option>Oil on Canvas</option>
+            <option>Acrylic</option>
+            <option>Watercolor</option>
+            <option>Mixed Media</option>
+        </select>
+    </div>
+</div>
+
+<section>
+    <h3>Current Exhibitions</h3>
+    <div class="exhibitions">
+        <div class="exhibit-card">
+            <small>Exhibition</small>
+            <h4>Modern Landscapes</h4>
+            <p>Contemporary interpretations of natural environments.</p>
+            <p><strong>Curator:</strong> Dr. Sarah Mitchell</p>
+        </div>
+
+        <div class="exhibit-card">
+            <small>Exhibition</small>
+            <h4>Digital Frontiers</h4>
+            <p>Art at the intersection of technology and creativity.</p>
+            <p><strong>Curator:</strong> Dr. Sarah Mitchell</p>
+        </div>
+
+        <div class="exhibit-card">
+            <small>Exhibition</small>
+            <h4>Timeless Portraits</h4>
+            <p>Classical portrait techniques with modern nuance.</p>
+            <p><strong>Curator:</strong> James Patterson</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>All Artworks</h3>
+
+    <div class="artworks">
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?oil-painting,landscape">
+            <div class="art-details">
+                <h4>Golden Valley</h4>
+                <p>Elena Rodríguez · Oil on Canvas</p>
+                <div class="price">$2,400</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?watercolor,flowers,painting">
+            <div class="art-details">
+                <h4>Blooming Silence</h4>
+                <p>Amina Okafor · Watercolor</p>
+                <div class="price">$1,800</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?abstract-painting,canvas">
+            <div class="art-details">
+                <h4>Echoes of Thought</h4>
+                <p>Marcus Chen · Abstract Acrylic</p>
+                <div class="price">$3,100</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?charcoal-sketch,portrait">
+            <div class="art-details">
+                <h4>Portrait of Time</h4>
+                <p>Isabella Moretti · Charcoal on Paper</p>
+                <div class="price">$1,500</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?traditional-painting,temple">
+            <div class="art-details">
+                <h4>Temple at Dawn</h4>
+                <p>Ravi Shankar · Traditional Indian Painting</p>
+                <div class="price">$2,900</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?renaissance-painting,architecture">
+            <div class="art-details">
+                <h4>Stone & Light</h4>
+                <p>Luca Romano · Oil on Panel</p>
+                <div class="price">$4,200</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?folk-art,painting">
+            <div class="art-details">
+                <h4>Village Stories</h4>
+                <p>Meera Nair · Folk Art</p>
+                <div class="price">$1,700</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?mythological-painting,art">
+            <div class="art-details">
+                <h4>Divine Journey</h4>
+                <p>Anand Rao · Mythological Painting</p>
+                <div class="price">$3,600</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section>
+    <h3>All Artworks</h3>
+
+    <div class="artworks">
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?oil-painting,landscape">
+            <div class="art-details">
+                <h4>Golden Valley</h4>
+                <p>Elena Rodríguez · Oil on Canvas</p>
+                <div class="price">$2,400</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?watercolor,flowers,painting">
+            <div class="art-details">
+                <h4>Blooming Silence</h4>
+                <p>Amina Okafor · Watercolor</p>
+                <div class="price">$1,800</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?abstract-painting,canvas">
+            <div class="art-details">
+                <h4>Echoes of Thought</h4>
+                <p>Marcus Chen · Abstract Acrylic</p>
+                <div class="price">$3,100</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?charcoal-sketch,portrait">
+            <div class="art-details">
+                <h4>Portrait of Time</h4>
+                <p>Isabella Moretti · Charcoal on Paper</p>
+                <div class="price">$1,500</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?traditional-painting,temple">
+            <div class="art-details">
+                <h4>Temple at Dawn</h4>
+                <p>Ravi Shankar · Traditional Indian Painting</p>
+                <div class="price">$2,900</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?renaissance-painting,architecture">
+            <div class="art-details">
+                <h4>Stone & Light</h4>
+                <p>Luca Romano · Oil on Panel</p>
+                <div class="price">$4,200</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?folk-art,painting">
+            <div class="art-details">
+                <h4>Village Stories</h4>
+                <p>Meera Nair · Folk Art</p>
+                <div class="price">$1,700</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?mythological-painting,art">
+            <div class="art-details">
+                <h4>Divine Journey</h4>
+                <p>Anand Rao · Mythological Painting</p>
+                <div class="price">$3,600</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section>
+    <h3>All Artworks</h3>
+
+    <div class="artworks">
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?oil-painting,landscape">
+            <div class="art-details">
+                <h4>Golden Valley</h4>
+                <p>Elena Rodríguez · Oil on Canvas</p>
+                <div class="price">$2,400</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?watercolor,flowers,painting">
+            <div class="art-details">
+                <h4>Blooming Silence</h4>
+                <p>Amina Okafor · Watercolor</p>
+                <div class="price">$1,800</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?abstract-painting,canvas">
+            <div class="art-details">
+                <h4>Echoes of Thought</h4>
+                <p>Marcus Chen · Abstract Acrylic</p>
+                <div class="price">$3,100</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?charcoal-sketch,portrait">
+            <div class="art-details">
+                <h4>Portrait of Time</h4>
+                <p>Isabella Moretti · Charcoal on Paper</p>
+                <div class="price">$1,500</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?traditional-painting,temple">
+            <div class="art-details">
+                <h4>Temple at Dawn</h4>
+                <p>Ravi Shankar · Traditional Indian Painting</p>
+                <div class="price">$2,900</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?renaissance-painting,architecture">
+            <div class="art-details">
+                <h4>Stone & Light</h4>
+                <p>Luca Romano · Oil on Panel</p>
+                <div class="price">$4,200</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?folk-art,painting">
+            <div class="art-details">
+                <h4>Village Stories</h4>
+                <p>Meera Nair · Folk Art</p>
+                <div class="price">$1,700</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="https://source.unsplash.com/400x300/?mythological-painting,art">
+            <div class="art-details">
+                <h4>Divine Journey</h4>
+                <p>Anand Rao · Mythological Painting</p>
+                <div class="price">$3,600</div>
+                <button>Add to Collection</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<footer>
+    © 2025 ArtGallery. All rights reserved.
+</footer>
+
+</body>
+</html>
